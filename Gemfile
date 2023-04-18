@@ -8,8 +8,11 @@ gem 'rails', '~> 6.0.6', '>= 6.0.6.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma', '~> 4.1' 
-
+gem 'puma', '~> 4.1'   
+ 
+gem 'image_processing', '~> 1.12', '>= 1.12.2'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+gem 'active_storage_validations', '0.8.2'
 gem 'bcrypt', '3.1.13' 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git'
 gem 'will_paginate', git: 'https://github.com/mislav/will_paginate.git'
