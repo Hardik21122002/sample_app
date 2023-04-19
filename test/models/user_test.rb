@@ -66,5 +66,34 @@ class UserTest < ActiveSupport::TestCase
     assert_difference 'Micropost.count', -1 do
       @user.destroy
     end
+  end 
+
+  test "should follow and unfollow a user" do 
+    hardik = users(:hardik) 
+    nishant = users(:nishant) 
+    assert_not hardik.following?(nishant) 
+    hardik.follow(nishant) 
+    assert hardik.following?(nishant) 
+    assert nishant.followers.include?(hardik) 
+    hardik.unfollow(nishant) 
+    assert_not hardik.following?(nishant) 
+  end 
+
+  test "feed should have the right posts" do
+    hardik = users(:hardik)
+    nishant = users(:nishant)
+    ronak = users(:ronak)
+    # Posts from followed user
+    ronak.microposts.each do |post_following|
+      assert hardik.feed.include?(post_following)
+    end
+    # Posts from self
+    hardik.microposts.each do |post_self|
+      assert hardik.feed.include?(post_self)
+    end
+    # Posts from unfollowed user
+    nishant.microposts.each do |post_unfollowed|
+      assert_not hardik.feed.include?(post_unfollowed)
+    end
   end
 end

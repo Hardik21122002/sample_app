@@ -1,0 +1,15 @@
+one:
+ follower: hardik
+ followed: ronak
+
+two:
+ follower: hardik
+ followed: sonal
+
+three:
+ follower: ronak
+ followed: hardik
+
+four:
+ follower: nishant
+ followed: hardik  
